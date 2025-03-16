@@ -11,11 +11,25 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
+    "paths": {
+      "@common/*": ["src/common/*"],
+      // "@shared/*":["src/shared/*"],
+      // "@database/*":["src/database/*"],
+      // "@config":["src/config"],
+      // "@helpers":["src/utils/helpers"],
+      // "@subscribers/*":["src/entity-subscribers/*"],
+      // "@auth":["src/modules/admin/auth"],
+      "@admin/*": ["src/modules/admin/*"],
+      // "@log":["src/modules/other/log"],
+      "@modules/*": ["src/modules/*"]
+    },
     "skipLibCheck": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }
