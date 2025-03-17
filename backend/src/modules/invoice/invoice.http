@@ -1,0 +1,25 @@
+### Get list of all invoices
+GET http://localhost:5000/api/v1/invoices
+
+### Get single university
+GET http://localhost:5000/api/v1/invoices/1
+
+### Create a new university
+POST  http://localhost:5000/api/v1/invoices
+Content-Type: application/json
+
+{
+  "name": "Invoice of Arizona",
+  "countryId": 1
+}
+
+### Update a university
+PUT  http://localhost:5000/api/v1/invoices/1
+Content-Type: application/json
+
+{
+  "name": "Florida State Invoice"
+}
+
+### Delete a university
+DELETE  http://localhost:5000/api/v1/invoices/1

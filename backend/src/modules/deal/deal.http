@@ -1,0 +1,24 @@
+### Get list of all deals
+GET http://localhost:5000/api/v1/deals
+
+### Get single deal
+GET http://localhost:5000/api/v1/deals/1
+
+### Create a new deal
+POST  http://localhost:5000/api/v1/deals
+Content-Type: application/json
+
+{
+  "name": "Computer Science of Engineering",
+}
+
+### Update a deal
+PUT  http://localhost:5000/api/v1/deals/1
+Content-Type: application/json
+
+{
+  "name": "CSE"
+}
+
+### Delete a deal
+DELETE  http://localhost:5000/api/v1/deals/1

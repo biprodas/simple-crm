@@ -2,18 +2,18 @@ import type { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export async function swaggerInit(app: INestApplication, apiVersion: string) {
-  const config = new DocumentBuilder()
+  const options = new DocumentBuilder()
     .setTitle('Simple CRM')
-    .setDescription('Backend API for Simple CRM.')
+    .setDescription('Backend API for CRM management')
     .setVersion(apiVersion)
-    .addTag('crm')
+    .addTag('simple-crm')
     .addBearerAuth()
-    .addCookieAuth('access_token', { type: 'apiKey', in: 'cookie' })
+    .addCookieAuth()
     .build();
 
-  const documentFactory = () => SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, options);
   const path = `api/v${apiVersion}/docs`;
-  SwaggerModule.setup(path, app, documentFactory, {
+  SwaggerModule.setup(path, app, document, {
     swaggerOptions: {
       persistAuthorization: true,
     },

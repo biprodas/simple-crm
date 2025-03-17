@@ -1,5 +1,5 @@
-import * as Joi from 'joi';
 import { Environment } from '@common/enums/environment.enum';
+import Joi from 'joi';
 
 export const configValidationSchema = Joi.object({
   APP_NAME: Joi.string().required(),

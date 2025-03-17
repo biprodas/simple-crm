@@ -1,0 +1,25 @@
+### Get list of all leads
+GET http://localhost:5000/api/v1/leads
+
+### Get single lead
+GET http://localhost:5000/api/v1/leads/1
+
+### Create a new lead
+POST  http://localhost:5000/api/v1/leads
+Content-Type: application/json
+
+{
+  "name": "Arizona",
+  "countryId": 1
+}
+
+### Update a lead
+PUT  http://localhost:5000/api/v1/leads/1
+Content-Type: application/json
+
+{
+  "name": "Florida"
+}
+
+### Delete a lead
+DELETE  http://localhost:5000/api/v1/leads/1
