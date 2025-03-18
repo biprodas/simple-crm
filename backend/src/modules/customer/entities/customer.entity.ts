@@ -10,6 +10,9 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { CustomerStatus } from '../enums/status.enum';
+import { CustomerType } from '../enums/customer-type.enum';
+import { CustomerTier } from '../enums/customer-tier.enum';
 
 @Entity('customers')
 export class CustomerEntity {
@@ -19,17 +22,39 @@ export class CustomerEntity {
   @Column()
   name: string;
 
+  @Column({
+    type: 'enum',
+    enum: CustomerType,
+    default: CustomerType.Personal,
+  })
+  type: CustomerType;
+
   @Column({ nullable: true })
   email: string;
 
   @Column({ nullable: true })
   phone: string;
 
-  @Column({ name: 'job_title', nullable: true })
-  jobTitle: string;
+  @Column({ name: 'bill_rate', nullable: true })
+  billRate: string;
 
+  @Column({ type: 'enum', enum: CustomerTier, nullable: true })
+  tier: CustomerTier;
+
+  @Column({
+    type: 'enum',
+    enum: CustomerStatus,
+    default: CustomerStatus.Prospect,
+  })
+  status: CustomerStatus;
+
+  // assignee
+
+  // contacts
   // projects
-  // accounts
+  // credentials
+
+  // lead - source lead
 
   // @Column({ name: 'country_id' })
   // countryId: string;
