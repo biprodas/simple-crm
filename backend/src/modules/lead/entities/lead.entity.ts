@@ -1,4 +1,3 @@
-import { CountryEntity } from '@modules/country/entities/country.entity';
 import {
   AfterInsert,
   AfterRemove,
@@ -10,6 +9,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { LeadStatus } from '../enums/status.enum';
 
 @Entity('leads')
 export class LeadEntity {
@@ -20,13 +20,28 @@ export class LeadEntity {
   name: string;
 
   @Column({ nullable: true })
+  description: string;
+
+  @Column({ name: 'contact_name', nullable: true })
+  contactName: string;
+
+  @Column({ name: 'job_title', nullable: true })
+  jobTitle: string;
+
+  @Column({ unique: true, nullable: true })
   email: string;
 
   @Column({ nullable: true })
   phone: string;
 
-  @Column({ name: 'job_title', nullable: true })
-  jobTitle: string;
+  // Social Media, Referral, Website, Email Campaign, Paid Advertising
+  @Column({ nullable: true })
+  source: string;
+
+  @Column({ type: 'enum', enum: LeadStatus, default: LeadStatus.NewLead })
+  status: LeadStatus;
+
+  // assignee, due date, priority
 
   // projects
   // accounts
