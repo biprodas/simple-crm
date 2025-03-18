@@ -1,13 +1,9 @@
-import { CountryEntity } from '@modules/country/entities/country.entity';
 import {
   AfterInsert,
   AfterRemove,
   AfterUpdate,
   Column,
   Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -28,18 +24,20 @@ export class ContactEntity {
   @Column({ name: 'job_title', nullable: true })
   jobTitle: string;
 
+  @Column({ name: 'company_name', nullable: true })
+  companyName: string;
+
+  // move to projects_contacts table
+  @Column({ name: 'is_primary', nullable: true })
+  isPrimary: boolean;
+
+  @Column({ name: 'is_archieved', nullable: true })
+  isArchieved: boolean;
+
+  @Column({ name: 'customer_id', nullable: true })
+  customerId: string;
+
   // projects
-  // accounts
-
-  // @Column({ name: 'country_id' })
-  // countryId: string;
-  // @ManyToOne((_type) => CountryEntity, (country) => country.contacts)
-  // @JoinColumn({ name: 'country_id' })
-  // country: CountryEntity;
-
-  // // relations
-  // @OneToMany((_type) => UniversityEntity, (university) => university.contact)
-  // universities: UniversityEntity[];
 
   // hooks
   @AfterInsert()

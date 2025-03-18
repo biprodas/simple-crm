@@ -6,13 +6,4 @@ export class ProjectResponseDto {
 
   @Expose()
   name: string;
-
-  @Expose()
-  email: string;
-
-  @Expose()
-  website: string;
-
-  @Expose()
-  details: string;
 }

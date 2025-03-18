@@ -3,12 +3,15 @@ import {
   AfterRemove,
   AfterUpdate,
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
+import { InvoiceStatus } from '../enums/status.enum';
 
 @Entity('invoices')
 export class InvoiceEntity {
@@ -19,19 +22,38 @@ export class InvoiceEntity {
   name: string;
 
   @Column({ nullable: true })
-  acronym: string;
+  invoiceNo: string;
+
+  @Column('decimal', { precision: 10, scale: 2 })
+  amount: number;
+
+  @Column('decimal', { precision: 10, scale: 2 })
+  discount: number;
+
+  // invoiceDate
+  @Column({ type: 'date' })
+  issueDate: Date;
+
+  @Column({ type: 'date', nullable: true })
+  dueDate: Date;
 
   @Column({ nullable: true })
-  website: string;
+  description: string;
 
-  // global=cs
-  @Column({ nullable: true })
-  ranking: string;
+  @Column({ type: 'enum', enum: InvoiceStatus, default: InvoiceStatus.Draft })
+  status: InvoiceStatus;
 
-  // other details
-  @Column({ nullable: true })
-  details: string;
-  // relations
+  // assignee
+  // accountId
+  // projectId
+  // milestoneId
+  // attachment
+
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
+  updatedAt: Date;
 
   // hooks
   @AfterInsert()

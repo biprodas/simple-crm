@@ -45,8 +45,6 @@ export class DealService {
 
     const deal = this.dealRepo.create(dto);
 
-    deal.name = dto.degree + ' in ' + dto.subject;
-
     return this.dealRepo.save(deal);
   }
 

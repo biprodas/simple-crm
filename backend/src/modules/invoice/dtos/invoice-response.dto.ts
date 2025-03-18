@@ -6,16 +6,4 @@ export class InvoiceResponseDto {
 
   @Expose()
   name: string;
-
-  @Expose()
-  acronym: string;
-
-  @Expose()
-  website: string;
-
-  @Expose()
-  ranking: string;
-
-  @Expose()
-  details: string;
 }

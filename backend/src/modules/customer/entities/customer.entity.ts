@@ -1,18 +1,14 @@
-import { CountryEntity } from '@modules/country/entities/country.entity';
 import {
   AfterInsert,
   AfterRemove,
   AfterUpdate,
   Column,
   Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { CustomerStatus } from '../enums/status.enum';
-import { CustomerType } from '../enums/customer-type.enum';
 import { CustomerTier } from '../enums/customer-tier.enum';
+import { CustomerType } from '../enums/customer-type.enum';
+import { CustomerStatus } from '../enums/status.enum';
 
 @Entity('customers')
 export class CustomerEntity {
@@ -35,11 +31,17 @@ export class CustomerEntity {
   @Column({ nullable: true })
   phone: string;
 
+  @Column({ nullable: true })
+  address: string;
+
   @Column({ name: 'bill_rate', nullable: true })
   billRate: string;
 
   @Column({ type: 'enum', enum: CustomerTier, nullable: true })
   tier: CustomerTier;
+
+  @Column({ name: 'lead_id', nullable: true })
+  leadId: string;
 
   @Column({
     type: 'enum',
@@ -53,8 +55,6 @@ export class CustomerEntity {
   // contacts
   // projects
   // credentials
-
-  // lead - source lead
 
   // @Column({ name: 'country_id' })
   // countryId: string;
