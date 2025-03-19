@@ -42,15 +42,15 @@ const authConfig = {
           body: JSON.stringify(payload),
         });
 
-        const { data, error } = await res.json();
-        // console.log("API Response:", data);
+        const result = await res.json();
+        console.log("API Response:", result);
 
         if (!res.ok) {
-          // console.error("API request error:", error);
-          throw new Error(error.message);
+          throw new Error(result.message || "Invalid credentials");
         }
 
-        if (res.ok && data.user) {
+        if (res.ok && result.data.user) {
+          const { data } = result;
           const user = {
             ...data.user,
             tokens: {

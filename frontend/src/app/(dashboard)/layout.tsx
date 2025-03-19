@@ -16,8 +16,17 @@ import {
 } from "~/components/ui/sidebar";
 import Footer from "./_components/footer";
 import Header from "./_components/header";
+import { currentUser } from "~/lib/auth";
+import { redirect } from "next/navigation";
 
-const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
+  const user = await currentUser();
+
+  if (!user) {
+    console.log("Not authenticated");
+    return redirect("/login");
+  }
+
   return (
     <SidebarProvider>
       <div className="flex flex-col h-screen w-full">
@@ -43,7 +52,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                   </Breadcrumb>
                 </div>
               </header>
-              <main className="flex-1 p-4 pt-0 min-h-[calc(100vh-154px)]">{children}</main>
+              <main className="flex-1 p-4 pt-0 min-h-[calc(100vh-154px)]">
+                {children}
+              </main>
               <Footer />
             </ScrollArea>
           </SidebarInset>

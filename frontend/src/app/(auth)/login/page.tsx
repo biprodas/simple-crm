@@ -1,8 +1,16 @@
+import { redirect } from "next/navigation";
+import { authSession } from "~/auth";
 import { LoginForm } from "~/components/auth/login-form";
 
-const LoginPage = () => {
+const LoginPage = async () => {
+  const session = await authSession();
+
+  if (session) {
+    redirect("/dashboard");
+  }
+
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-3">
+    <div className="h-screen flex justify-center items-center">
       <LoginForm />
     </div>
   );

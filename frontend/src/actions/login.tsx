@@ -23,11 +23,13 @@ export const login = async (
     const result = await signIn("credentials", {
       email,
       password,
-      redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT,
+      redirect: false,
+      // redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT,
     });
     console.log("action login result", result);
     return result;
   } catch (error) {
+    console.log("AuthError Details:", error);
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
