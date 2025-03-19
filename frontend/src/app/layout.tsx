@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 
+import { authSession } from "~/auth";
 import { appConfig } from "~/config";
 import { geistMono, geistSans } from "~/font";
 import { cn } from "~/lib/utils";
 import { ThemeProvider } from "~/providers/theme-provider";
 import { ToasterProvider } from "~/providers/toast-provider";
+import ReactQueryProvider from "~/utils/react-query";
 
 import "./globals.css";
 
@@ -23,30 +26,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await authSession();
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          geistSans.variable,
-          geistMono.variable
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <SessionProvider session={session}>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            geistSans.variable,
+            geistMono.variable
+          )}
         >
-          <ToasterProvider />
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+          <ReactQueryProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <ToasterProvider />
+              {children}
+            </ThemeProvider>
+          </ReactQueryProvider>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }
