@@ -8,11 +8,10 @@ interface LoginPageProps {
     to?: string;
     error?: string;
   };
-};
+}
 
-const LoginPage = async ({ params, searchParams }: LoginPageProps) => {
+const LoginPage = async () => {
   const session = await authSession();
-  const { error, to } = searchParams;
 
   if (session) {
     return redirect("/dashboard");

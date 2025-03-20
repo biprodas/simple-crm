@@ -1,25 +1,28 @@
-import React from "react";
-import { LogoutButton } from "~/components/auth/logout-button";
+"use client";
+
+import { Plus } from "lucide-react";
+
 import { Button } from "~/components/ui/button";
-import { currentUser } from "~/lib/auth";
+import { useNewLead } from "~/features/lead/hooks/use-new-lead";
+import { Heading } from "../_components/heading";
+import { LeadClient } from "./_components/client";
 
-const LeadPage = async () => {
-  const user = await currentUser();
-
-  if (!user) {
-    return <div>Not authenticated</div>;
-  }
+const LeadPage = () => {
+  const newLead = useNewLead();
 
   return (
     <div className="p-3">
-      <h4>Lead Page</h4>
-      <div>Name: {user?.name}</div>
-      <div className="border">
-        <h4>List</h4>
-      </div>
-      <LogoutButton>
-        <Button>Logout</Button>
-      </LogoutButton>
+      <Heading
+        title="Leads"
+        description="List of leads"
+        extra={
+          <Button onClick={newLead.onOpen} className="rounded-full">
+            <Plus className="size-4" />
+            Add new
+          </Button>
+        }
+      />
+      <LeadClient />
     </div>
   );
 };

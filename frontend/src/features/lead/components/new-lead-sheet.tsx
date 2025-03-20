@@ -36,22 +36,24 @@ export const NewLeadSheet = () => {
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent className="space-y-4">
-        <SheetHeader>
+      <SheetContent className="w-[400px] sm:w-[540px]">
+        <SheetHeader className="">
           <SheetTitle>New Lead</SheetTitle>
           <SheetDescription>
             Create a lead tour next destination.
           </SheetDescription>
         </SheetHeader>
-        <LeadForm
-          onSubmit={onSubmit}
-          loading={mutation.isPending}
-          disabled={mutation.isPending}
-          defaultValues={{
-            name: "",
-            acronym: "",
-          }}
-        />
+        <div className="px-4 ">
+          <LeadForm
+            onSubmit={onSubmit}
+            loading={mutation.isPending}
+            disabled={mutation.isPending}
+            defaultValues={{
+              name: "",
+              acronym: "",
+            }}
+          />
+        </div>
       </SheetContent>
     </Sheet>
   );

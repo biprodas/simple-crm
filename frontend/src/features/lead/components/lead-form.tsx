@@ -51,7 +51,7 @@ export const LeadForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className="space-y-6 py-5"
+        className="space-y-6"
       >
         <FormField
           name="name"
