@@ -2,11 +2,20 @@ import { redirect } from "next/navigation";
 import { authSession } from "~/auth";
 import { LoginForm } from "~/components/auth/login-form";
 
-const LoginPage = async () => {
+interface LoginPageProps {
+  params: {};
+  searchParams: {
+    to?: string;
+    error?: string;
+  };
+};
+
+const LoginPage = async ({ params, searchParams }: LoginPageProps) => {
   const session = await authSession();
+  const { error, to } = searchParams;
 
   if (session) {
-    redirect("/dashboard");
+    return redirect("/dashboard");
   }
 
   return (

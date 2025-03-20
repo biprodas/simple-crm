@@ -32,6 +32,7 @@ import { Label } from "~/components/ui/label";
 import { LoginSchema } from "~/schemas/auth";
 import GoogleIcon from "~/icons/google";
 import { signIn } from "~/auth";
+import toast from "react-hot-toast";
 
 export const LoginForm = () => {
   const searchParams = useSearchParams();
@@ -61,7 +62,8 @@ export const LoginForm = () => {
     console.log("Credentials", values);
 
     const result = await login(values, callbackUrl);
-
+    toast.success("Login successful");
+    
     console.log("final result", result);
 
     // startTransition(() => {

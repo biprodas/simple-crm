@@ -23,6 +23,13 @@ export type ITokenResponse = {
   userId: string;
 };
 
+export type ApiResponse<T = any> = {
+  data: T;
+  status_code: number;
+  message: string;
+  detail?: string;
+};
+
 // ------
 export type Unpromisify<T> = T extends Promise<infer R> ? R : T;
 
@@ -30,12 +37,7 @@ export type AnyObject = Record<string, any>;
 export type AnyArray = unknown[];
 export type AnyObjectOrArray = AnyObject | AnyArray;
 
-export type ApiResponse<T = any> = {
-  data: T;
-  status_code: number;
-  message: string;
-  detail?: string;
-};
+
 
 export interface PaginatedApiResponse<T> extends ApiResponse<T> {
   options: {

@@ -19,12 +19,14 @@ export const login = async (
 
   const { email, password, code } = validatedFields.data;
 
+  const redirectTo = callbackUrl || DEFAULT_LOGIN_REDIRECT;
+
   try {
     const result = await signIn("credentials", {
       email,
       password,
-      redirect: false,
-      // redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT,
+      redirectTo,
+      redirect: !!redirectTo,
     });
     console.log("action login result", result);
     return result;
