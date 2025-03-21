@@ -19,8 +19,17 @@ import {
 import { SheetProvider } from "~/providers/sheet-provider";
 import Footer from "./_components/footer";
 import Header from "./_components/header";
+import { currentUser } from "~/lib/auth";
+import { redirect } from "next/navigation";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
+    const user = await currentUser();
+  
+    if (!user) {
+      console.log("Not authenticated");
+      return redirect("/login");
+    }
+  
   return (
     <SidebarProvider>
       <div className="flex flex-col h-screen w-full">

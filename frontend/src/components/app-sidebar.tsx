@@ -104,12 +104,12 @@ const data = {
   projects: [
     {
       name: "Design Engineering",
-      url: "#",
+      url: "leads",
       icon: Frame,
     },
     {
       name: "Sales & Marketing",
-      url: "#",
+      url: "/customers",
       icon: PieChart,
     },
     {

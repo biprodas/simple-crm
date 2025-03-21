@@ -8,7 +8,8 @@ const DashboardPage = async () => {
   const user = await currentUser();
 
   if (!user) {
-    return <div>Not authenticated</div>;
+    console.log("Not authenticated");
+    return redirect("/login");
   }
 
   return (
