@@ -10,6 +10,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { LeadStatus } from '../enums/status.enum';
+import { CustomerEntity } from '@modules/customer/entities/customer.entity';
 
 @Entity('leads')
 export class LeadEntity {
@@ -43,18 +44,9 @@ export class LeadEntity {
 
   // assignee, due date, priority
 
-  // projects
-  // accounts
-
-  // @Column({ name: 'country_id' })
-  // countryId: string;
-  // @ManyToOne((_type) => CountryEntity, (country) => country.leads)
-  // @JoinColumn({ name: 'country_id' })
-  // country: CountryEntity;
-
   // // relations
-  // @OneToMany((_type) => UniversityEntity, (university) => university.lead)
-  // universities: UniversityEntity[];
+  @OneToMany((_type) => CustomerEntity, (customer) => customer.lead)
+  customers: CustomerEntity[];
 
   // hooks
   @AfterInsert()

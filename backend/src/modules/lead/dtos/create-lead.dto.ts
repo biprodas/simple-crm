@@ -1,11 +1,13 @@
 import { Transform } from 'class-transformer';
 import {
   IsDefined,
+  IsEnum,
   IsNotEmpty,
   IsOptional,
   IsString,
   IsUUID,
 } from 'class-validator';
+import { LeadStatus } from '../enums/status.enum';
 
 export class CreateLeadDto {
   @IsString()
@@ -16,9 +18,34 @@ export class CreateLeadDto {
   @Transform(({ value }) => value || null)
   @IsString()
   @IsOptional()
-  acronym: string;
+  description: string;
 
-  @IsUUID('4')
-  @IsDefined()
-  countryId: string;
+  @Transform(({ value }) => value || null)
+  @IsString()
+  @IsOptional()
+  email: string;
+
+  @Transform(({ value }) => value || null)
+  @IsString()
+  @IsOptional()
+  phone: string;
+
+  @Transform(({ value }) => value || null)
+  @IsString()
+  @IsOptional()
+  contactName: string;
+
+  @Transform(({ value }) => value || null)
+  @IsString()
+  @IsOptional()
+  jobTitle: string;
+
+  @Transform(({ value }) => value || null)
+  @IsString()
+  @IsOptional()
+  source: string;
+
+  @IsEnum(LeadStatus)
+  @IsOptional()
+  status: LeadStatus;
 }

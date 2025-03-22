@@ -4,11 +4,14 @@ import {
   AfterUpdate,
   Column,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { CustomerTier } from '../enums/customer-tier.enum';
 import { CustomerType } from '../enums/customer-type.enum';
 import { CustomerStatus } from '../enums/status.enum';
+import { LeadEntity } from '@modules/lead/entities/lead.entity';
 
 @Entity('customers')
 export class CustomerEntity {
@@ -42,6 +45,9 @@ export class CustomerEntity {
 
   @Column({ name: 'lead_id', nullable: true })
   leadId: string;
+  @ManyToOne((_type) => LeadEntity, (lead) => lead.customers)
+  @JoinColumn({ name: 'lead_id' })
+  lead: LeadEntity;
 
   @Column({
     type: 'enum',
@@ -55,12 +61,6 @@ export class CustomerEntity {
   // contacts
   // projects
   // credentials
-
-  // @Column({ name: 'country_id' })
-  // countryId: string;
-  // @ManyToOne((_type) => CountryEntity, (country) => country.customers)
-  // @JoinColumn({ name: 'country_id' })
-  // country: CountryEntity;
 
   // // relations
   // @OneToMany((_type) => UniversityEntity, (university) => university.customer)

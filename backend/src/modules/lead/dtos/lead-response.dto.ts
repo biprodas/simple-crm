@@ -6,4 +6,22 @@ export class LeadResponseDto {
 
   @Expose()
   name: string;
+
+  @Expose()
+  description: string;
+
+  @Expose()
+  email: string;
+
+  @Expose()
+  phone: string;
+
+  @Expose()
+  contactName: string;
+
+  @Expose()
+  jobTitle: string;
+
+  @Expose()
+  source: string;
 }
