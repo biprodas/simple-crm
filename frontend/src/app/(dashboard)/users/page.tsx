@@ -1,10 +1,10 @@
 import { LogoutButton } from "~/components/auth/logout-button";
 import { Button } from "~/components/ui/button";
 import { currentUser } from "~/lib/auth";
-import { Users } from "./_components/Users";
 import { IUser } from "~/types";
 import ErrorHandler from "~/components/error-handler";
 import { getUsers } from "~/features/user/service";
+import { Users } from "~/features/user/ui/Users";
 
 const UsersPage = async () => {
   let users: IUser[] = [];

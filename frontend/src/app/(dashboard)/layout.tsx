@@ -17,8 +17,8 @@ import {
   SidebarTrigger,
 } from "~/components/ui/sidebar";
 import { SheetProvider } from "~/providers/sheet-provider";
-import Footer from "./_components/footer";
-import Header from "./_components/header";
+import Footer from "~/features/dashboard/ui/footer";
+import Header from "~/features/dashboard/ui/header";
 import { currentUser } from "~/lib/auth";
 import { redirect } from "next/navigation";
 

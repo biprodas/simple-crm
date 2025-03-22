@@ -4,8 +4,8 @@ import { Plus } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
 import { useNewLead } from "~/features/lead/hooks/use-new-lead";
-import { Heading } from "../_components/heading";
-import { LeadClient } from "./_components/client";
+import { Heading } from "~/features/dashboard/ui/heading";
+import { LeadClient } from "~/features/lead/ui/client";
 
 const LeadPage = () => {
   const newLead = useNewLead();
