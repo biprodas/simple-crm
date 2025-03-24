@@ -19,13 +19,13 @@ type Props = {
 
 export const Actions = ({ id }: Props) => {
   const { onOpen } = useOpenLead();
-  const departmentModal = useDeleteLead();
+  const leadModal = useDeleteLead();
 
   return (
     <>
       <DeleteLeadDialog
-        title="Delete Department"
-        description="Are you to delete this department? This will permanently remove from our servers. This action cannot be undone."
+        title="Delete Lead"
+        description="Are you to delete this Lead? This will permanently remove from our servers. This action cannot be undone."
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -38,7 +38,7 @@ export const Actions = ({ id }: Props) => {
             <Edit className="size-4 mr-2" />
             Edit
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => departmentModal.onOpen(id)}>
+          <DropdownMenuItem onClick={() => leadModal.onOpen(id)}>
             <Trash className="size-4 mr-2" />
             Delete
           </DropdownMenuItem>

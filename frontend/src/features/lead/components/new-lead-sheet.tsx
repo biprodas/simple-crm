@@ -10,12 +10,18 @@ import {
 import { useNewLead } from "../hooks/use-new-lead";
 import { useCreateLeadMutation } from "../apis/queries";
 import { LeadForm } from "./lead-form";
+import toast from "react-hot-toast";
 
 export const formSchema = z.object({
   name: z.string().min(1, {
     message: "Name is required",
   }),
-  acronym: z.string().optional(),
+  description: z.string().optional(),
+  contactName: z.string().optional(),
+  jobTitle: z.string().optional(),
+  email: z.string().email({ message: "Invalid email address" }).optional(),
+  phone: z.string().optional(),
+  source: z.string().optional(),
 });
 
 type FormValues = z.input<typeof formSchema>;
@@ -26,9 +32,10 @@ export const NewLeadSheet = () => {
   const mutation = useCreateLeadMutation();
 
   const onSubmit = (values: FormValues) => {
-    console.log("values", values);
+    // return console.log("values", values);
     mutation.mutate(values, {
       onSuccess: () => {
+        toast.success("Lead created successfully");
         onClose();
       },
     });
@@ -36,9 +43,9 @@ export const NewLeadSheet = () => {
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent className="w-[400px] sm:w-[540px]">
+      <SheetContent className="w-[92%] sm:w-[540px] lg:w-[650] xl:w-[720px]">
         <SheetHeader className="">
-          <SheetTitle>New Lead</SheetTitle>
+          <SheetTitle className="text-xl">New Lead</SheetTitle>
           <SheetDescription>
             Create a lead tour next destination.
           </SheetDescription>
@@ -50,7 +57,12 @@ export const NewLeadSheet = () => {
             disabled={mutation.isPending}
             defaultValues={{
               name: "",
-              acronym: "",
+              description: "",
+              contactName: "",
+              jobTitle: "",
+              email: "",
+              phone: "",
+              source: "",
             }}
           />
         </div>

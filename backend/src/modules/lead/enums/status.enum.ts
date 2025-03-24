@@ -9,3 +9,5 @@ export enum LeadStatus {
   // Completed
   Qualified = 'Qualified',
 }
+
+// 'Contacted'  | 'Proposal Sent' | 'Negotiation' | 'Won' | 'Lost

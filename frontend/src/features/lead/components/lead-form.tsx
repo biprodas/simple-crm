@@ -12,12 +12,18 @@ import {
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
+import { Textarea } from "~/components/ui/textarea";
 
 export const formSchema = z.object({
   name: z.string().min(1, {
     message: "Name is required",
   }),
-  acronym: z.string().optional(),
+  description: z.string().optional(),
+  contactName: z.string().optional(),
+  jobTitle: z.string().optional(),
+  email: z.string().email({ message: "Invalid email address" }).optional(),
+  phone: z.string().optional(),
+  source: z.string().optional(),
 });
 
 type FormValues = z.input<typeof formSchema>;
@@ -49,10 +55,7 @@ export const LeadForm = ({
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className="space-y-6"
-      >
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
         <FormField
           name="name"
           control={form.control}
@@ -79,13 +82,38 @@ export const LeadForm = ({
         />
 
         <FormField
-          name="acronym"
+          name="description"
           control={form.control}
           render={({ field }) => (
             <FormItem>
               <div>
                 <Label htmlFor={field.name} className="mb-2">
-                  Acronym
+                  Description
+                </Label>
+                <div className="relative">
+                  <FormControl>
+                    <Textarea
+                      {...field}
+                      id={field.name}
+                      disabled={disabled}
+                      placeholder="Enter description"
+                    />
+                  </FormControl>
+                  <FormMessage className="absolute" />
+                </div>
+              </div>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          name="contactName"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <div>
+                <Label htmlFor={field.name} className="mb-2">
+                  Contact Name
                 </Label>
                 <div className="relative">
                   <FormControl>
@@ -93,7 +121,107 @@ export const LeadForm = ({
                       {...field}
                       id={field.name}
                       disabled={disabled}
-                      placeholder="Enter lead name"
+                      placeholder="Enter contact name"
+                    />
+                  </FormControl>
+                  <FormMessage className="absolute" />
+                </div>
+              </div>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          name="jobTitle"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <div>
+                <Label htmlFor={field.name} className="mb-2">
+                  Job Title
+                </Label>
+                <div className="relative">
+                  <FormControl>
+                    <Input
+                      {...field}
+                      id={field.name}
+                      disabled={disabled}
+                      placeholder="Enter job title"
+                    />
+                  </FormControl>
+                  <FormMessage className="absolute" />
+                </div>
+              </div>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          name="email"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <div>
+                <Label htmlFor={field.name} className="mb-2">
+                  Email
+                </Label>
+                <div className="relative">
+                  <FormControl>
+                    <Input
+                      {...field}
+                      id={field.name}
+                      disabled={disabled}
+                      placeholder="Enter email address"
+                    />
+                  </FormControl>
+                  <FormMessage className="absolute" />
+                </div>
+              </div>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          name="phone"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <div>
+                <Label htmlFor={field.name} className="mb-2">
+                  Phone
+                </Label>
+                <div className="relative">
+                  <FormControl>
+                    <Input
+                      {...field}
+                      id={field.name}
+                      disabled={disabled}
+                      placeholder="Enter phone no"
+                    />
+                  </FormControl>
+                  <FormMessage className="absolute" />
+                </div>
+              </div>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          name="source"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <div>
+                <Label htmlFor={field.name} className="mb-2">
+                  Lead Source
+                </Label>
+                <div className="relative">
+                  <FormControl>
+                    <Input
+                      {...field}
+                      id={field.name}
+                      disabled={disabled}
+                      placeholder="Enter lead source"
                     />
                   </FormControl>
                   <FormMessage className="absolute" />

@@ -18,7 +18,7 @@ export const getLead = async (leadId: string) => {
   return res.data;
 };
 
-const createLead = async (data: ICreateLead) => {
+export const createLead = async (data: ICreateLead) => {
   const res = await apiClient.post<ILeadResponse>(
     "/api/v1/Leads",
     data
@@ -37,7 +37,7 @@ export const updateLead = async (
   return res.data;
 };
 
-const deleteLead = async (leadId: string) => {
+export const deleteLead = async (leadId: string) => {
   const res = await apiClient.delete(`/api/v1/Leads/${leadId}`);
   return res.data;
 };

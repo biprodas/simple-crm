@@ -45,8 +45,32 @@ export const columns: ColumnDef<ILead>[] = [
     },
   },
   {
-    accessorKey: "acronym",
-    header: "Acronym",
+    accessorKey: "description",
+    header: "Description",
+  },
+  {
+    accessorKey: "contactName",
+    header: "Contact Name",
+  },
+  {
+    accessorKey: "jobTitle",
+    header: "Job Title",
+  },
+  {
+    accessorKey: "email",
+    header: "Email",
+  },
+  {
+    accessorKey: "phone",
+    header: "Phone",
+  },
+  {
+    accessorKey: "source",
+    header: "Source",
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
   },
   {
     id: "actions",
