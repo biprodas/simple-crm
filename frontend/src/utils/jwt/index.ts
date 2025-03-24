@@ -1,3 +1,6 @@
+
+import { jwtDecode } from "jwt-decode";
+
 export const atob = (base64: string) => {
   const buffer = Buffer.from(base64, 'base64');
   return buffer.toString('utf-8');
@@ -21,4 +24,14 @@ export const isTokenExpired = (token: string) => {
   if (!decodedToken) return true;
   const currentTime = Date.now() / 1000;
   return decodedToken.exp < currentTime;
+};
+
+export const checkTokenExpiration = (token: string) => {
+  if (!token) return true;
+  try {
+    const decoded: any = jwtDecode(token);
+    return decoded.exp * 1000 < Date.now();
+  } catch (error) {
+    return true;
+  }
 };

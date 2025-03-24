@@ -13,7 +13,8 @@ interface LoginPageProps {
 const LoginPage = async () => {
   const session = await authSession();
 
-  if (session) {
+  if (session?.user) {
+    console.log("LoginPage: Already authenticated");
     return redirect("/dashboard");
   }
 

@@ -4,7 +4,7 @@ import { currentUser } from "~/lib/auth";
 export default function Home() {
   const user = currentUser();
   if (!user) {
-    console.log("Not authenticated");
+    console.log("Home: Not authenticated");
     return redirect("/login");
   }
 

@@ -2,6 +2,7 @@ import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import { appConfig } from "./config";
+import { isTokenExpired } from "./utils/jwt";
 
 // Define your configuration in a separate variable and pass it to NextAuth()
 // This way we can also 'export const config' for use later
@@ -10,6 +11,7 @@ const authConfig = {
   secret: process.env.AUTH_SECRET,
   pages: {
     signIn: "/login",
+    // error: "/auth/error",
   },
   providers: [
     Google({
@@ -43,7 +45,7 @@ const authConfig = {
         });
 
         const result = await res.json();
-        console.log("API Response:", result);
+        // console.log("API Response:", result);
 
         if (!res.ok) {
           throw new Error(result.message || "Invalid credentials");
@@ -84,6 +86,12 @@ const authConfig = {
     },
     async jwt({ token, user, account, trigger, session }) {
       // console.log("calbacks.jwt", token, user, account, trigger, session);
+
+      if (user && isTokenExpired(user.tokens.accessToken)) {
+        console.log(`Access Token Expired`);
+        // const data = await getRefreshedTokens(token.refreshToken);
+        return null;
+      }
 
       if (account?.provider === "google") {
         // const res = await socialLogin({ provider: "google", access_token: account.access_token as string });

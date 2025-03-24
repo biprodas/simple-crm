@@ -52,6 +52,11 @@ const data = {
   ],
   navMain: [
     {
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: SquareTerminal,
+    },
+    {
       title: "Leads",
       url: "/leads",
       icon: SquareTerminal,
