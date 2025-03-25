@@ -29,6 +29,7 @@ export class LeadEntity {
   @Column({ name: 'job_title', nullable: true })
   jobTitle: string;
 
+  // unique ?
   @Column({ unique: true, nullable: true })
   email: string;
 

@@ -1,4 +1,4 @@
 
 export default function Loading() {
-  return <div>Loading Lead...</div>;
+  return <div>Loading Leads...</div>;
 }

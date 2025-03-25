@@ -7,35 +7,36 @@ import {
   SheetHeader,
   SheetTitle,
 } from "~/components/ui/sheet";
-import { useNewLead } from "../hooks/use-new-lead";
-import { useCreateLeadMutation } from "../apis/queries";
-import { LeadForm } from "./lead-form";
+import { useNewCustomer } from "../hooks/use-new-customer";
+import { useCreateCustomerMutation } from "../apis/queries";
+import { CustomerForm } from "./customer-form";
 import toast from "react-hot-toast";
 
 export const formSchema = z.object({
   name: z.string().min(1, {
     message: "Name is required",
   }),
-  description: z.string().optional(),
-  contactName: z.string().optional(),
-  jobTitle: z.string().optional(),
+  type: z.enum(["Personal", "Company"]).optional(),
   email: z.string().email({ message: "Invalid email address" }).optional(),
   phone: z.string().optional(),
-  source: z.string().optional(),
+  address: z.string().optional(),
+  billRate: z.string().optional(),
+  tier: z.enum(["Bronze", "Silver", "Gold"]).optional(),
+  leadId: z.string().optional(),
 });
 
 type FormValues = z.input<typeof formSchema>;
 
-export const NewLeadSheet = () => {
-  const { isOpen, onClose } = useNewLead();
+export const NewCustomerSheet = () => {
+  const { isOpen, onClose } = useNewCustomer();
 
-  const mutation = useCreateLeadMutation();
+  const mutation = useCreateCustomerMutation();
 
   const onSubmit = (values: FormValues) => {
     // return console.log("values", values);
     mutation.mutate(values, {
       onSuccess: () => {
-        toast.success("Lead created successfully");
+        toast.success("Customer created successfully");
         onClose();
       },
     });
@@ -45,24 +46,22 @@ export const NewLeadSheet = () => {
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-[92%] sm:w-[540px] lg:w-[650] xl:w-[720px]">
         <SheetHeader className="">
-          <SheetTitle className="text-xl">New Lead</SheetTitle>
-          <SheetDescription>
-            Create a lead.
-          </SheetDescription>
+          <SheetTitle className="text-xl">New Customer</SheetTitle>
+          <SheetDescription>Create a customer or account</SheetDescription>
         </SheetHeader>
         <div className="px-4 ">
-          <LeadForm
+          <CustomerForm
             onSubmit={onSubmit}
             loading={mutation.isPending}
             disabled={mutation.isPending}
             defaultValues={{
               name: "",
-              description: "",
-              contactName: "",
-              jobTitle: "",
+              type: undefined,
               email: "",
               phone: "",
-              source: "",
+              address: "",
+              billRate: "",
+              tier: undefined,
             }}
           />
         </div>

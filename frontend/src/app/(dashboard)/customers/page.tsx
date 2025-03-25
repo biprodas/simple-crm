@@ -1,9 +1,18 @@
-import React from 'react'
+import { redirect } from "next/navigation";
+import { CustomerScreen } from "~/features/customer/ui/customer-screen";
+import { currentUser } from "~/lib/auth";
 
-const CustomerPage = () => {
+const CustomerPage = async () => {
+  const user = await currentUser();
+  
+  if (!user) {
+    console.log("Customer Page: Not authenticated");
+    return redirect("/login");
+  }
+
   return (
-    <div>CustomerPage</div>
-  )
-}
+    <CustomerScreen />
+  );
+};
 
-export default CustomerPage
+export default CustomerPage;

@@ -8,7 +8,7 @@ const LeadPage = async () => {
   const user = await currentUser();
   
   if (!user) {
-    console.log("Not authenticated");
+    console.log("Lead Page: Not authenticated");
     return redirect("/login");
   }
 
