@@ -4,11 +4,11 @@ import { redirect } from "next/navigation";
 import { ContactScreen } from "~/features/contact/ui/contact-screen";
 import { currentUser } from "~/lib/auth";
 
-const ContactPage = async () => {
+const ContactsPage = async () => {
   const user = await currentUser();
   
   if (!user) {
-    console.log("Contact Page: Not authenticated");
+    console.log("Contacts Page: Not authenticated");
     return redirect("/login");
   }
 
@@ -17,4 +17,4 @@ const ContactPage = async () => {
   );
 };
 
-export default ContactPage;
+export default ContactsPage;

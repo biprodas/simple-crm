@@ -1,9 +1,16 @@
-import React from 'react'
+import { redirect } from "next/navigation";
+import { InvoiceScreen } from "~/features/invoice/ui/invoice-screen";
+import { currentUser } from "~/lib/auth";
 
-const InvoicesPage = () => {
-  return (
-    <div>InvoicesPage</div>
-  )
-}
+const InvoicesPage = async () => {
+  const user = await currentUser();
 
-export default InvoicesPage
+  if (!user) {
+    console.log("Invoices Page: Not authenticated");
+    return redirect("/login");
+  }
+
+  return <InvoiceScreen />;
+};
+
+export default InvoicesPage;

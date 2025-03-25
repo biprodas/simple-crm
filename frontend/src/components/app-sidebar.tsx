@@ -83,7 +83,7 @@ const data = {
     },
     {
       title: "Invoices",
-      url: "/invoicse",
+      url: "/invoices",
       icon: SquareTerminal,
     },
     // {

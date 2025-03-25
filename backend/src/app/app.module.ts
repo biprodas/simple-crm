@@ -16,10 +16,10 @@ import { CountryModule } from '@modules/country/country.module';
 import { CategoryModule } from '@modules/category/department.module';
 import { ContactModule } from '@modules/contact/contact.module';
 import { DealModule } from '@modules/deal/deal.module';
-import { InvoiceEntity } from '@modules/invoice/entities/invoice.entity';
 import { ProjectModule } from '@modules/project/project.module';
 import { LeadModule } from '@modules/lead/lead.module';
 import { CustomerModule } from '@modules/customer/customer.module';
+import { InvoiceModule } from '@modules/invoice/invoice.module';
 
 @Module({
   imports: [
@@ -36,6 +36,7 @@ import { CustomerModule } from '@modules/customer/customer.module';
       },
     }),
     ScheduleModule.forRoot(),
+    JobsModule.forRoot(),
     DatabaseModule,
     AdminModule,
     FileModule,
@@ -45,13 +46,12 @@ import { CustomerModule } from '@modules/customer/customer.module';
     TaskModule,
     LogModule,
     MailModule,
-    JobsModule.forRoot(),
     // new modules
     CategoryModule,
     CountryModule,
     LeadModule,
     CustomerModule,
-    InvoiceEntity,
+    InvoiceModule,
     ContactModule,
     ProjectModule,
     DealModule,

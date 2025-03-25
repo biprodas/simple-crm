@@ -1,20 +1,19 @@
 
 
 import { redirect } from "next/navigation";
-import { LeadScreen } from "~/features/lead/ui/lead-screen";
 import { currentUser } from "~/lib/auth";
 
-const LeadsPage = async () => {
+const ProjectsPage = async () => {
   const user = await currentUser();
   
   if (!user) {
-    console.log("Lead Page: Not authenticated");
+    console.log("Project Page: Not authenticated");
     return redirect("/login");
   }
 
   return (
-    <LeadScreen />
+    <div>Project screen</div>
   );
 };
 
-export default LeadsPage;
+export default ProjectsPage;

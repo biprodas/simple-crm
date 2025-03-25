@@ -2,11 +2,11 @@ import { redirect } from "next/navigation";
 import { CustomerScreen } from "~/features/customer/ui/customer-screen";
 import { currentUser } from "~/lib/auth";
 
-const CustomerPage = async () => {
+const CustomersPage = async () => {
   const user = await currentUser();
   
   if (!user) {
-    console.log("Customer Page: Not authenticated");
+    console.log("Customers Page: Not authenticated");
     return redirect("/login");
   }
 
@@ -15,4 +15,4 @@ const CustomerPage = async () => {
   );
 };
 
-export default CustomerPage;
+export default CustomersPage;
