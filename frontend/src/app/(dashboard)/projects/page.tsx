@@ -1,6 +1,7 @@
 
 
 import { redirect } from "next/navigation";
+import { ProjectScreen } from "~/features/project/ui/project-screen";
 import { currentUser } from "~/lib/auth";
 
 const ProjectsPage = async () => {
@@ -12,7 +13,7 @@ const ProjectsPage = async () => {
   }
 
   return (
-    <div>Project screen</div>
+    <ProjectScreen />
   );
 };
 

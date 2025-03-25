@@ -12,6 +12,7 @@ import {
 } from 'typeorm';
 import { PriorityEnum } from '../enums/priority.enum';
 import { ProjectStatus } from '../enums/status.enum';
+import { ProjectType } from '../enums/project-type.enum';
 
 @Entity('projects')
 export class ProjectEntity {
@@ -21,11 +22,14 @@ export class ProjectEntity {
   @Column()
   name: string;
 
+  @Column({ type: 'text', nullable: true })
+  description: string;
+  
   @Column({ name: 'start_date', type: 'timestamp', nullable: true })
   startDate: Date;
 
-  @Column({ name: 'end_date', type: 'timestamp', nullable: true })
-  endDate: Date;
+  @Column({ name: 'due_date', type: 'timestamp', nullable: true })
+  dueDate: Date;
 
   @Column({ type: 'enum', enum: PriorityEnum, nullable: true })
   priority: PriorityEnum;
@@ -38,17 +42,17 @@ export class ProjectEntity {
   @Column({ name: 'time_tracked', type: 'int', nullable: true })
   timeTracked: number;
 
-  // in hour
+  // calculated - in hour
   @Column({ name: 'time_difference', type: 'int', nullable: true })
   timeDifference: number;
 
   @Column({
     name: 'project_type',
     type: 'enum',
-    enum: ['Fixed', 'Hourly'],
-    default: 'Fixed',
+    enum: ProjectType,
+    nullable: true,
   })
-  projectType: 'Fixed' | 'Hourly';
+  projectType: ProjectType;
 
   @Column({
     name: 'project_value',
@@ -72,8 +76,6 @@ export class ProjectEntity {
   // dealId
   // invoices
 
-  @Column({ nullable: true })
-  details: string;
 
   @CreateDateColumn()
   createdAt: Date;

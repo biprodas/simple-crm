@@ -77,6 +77,11 @@ const data = {
       icon: SquareTerminal,
     },
     {
+      title: "Projects",
+      url: "/projects",
+      icon: SquareTerminal,
+    },
+    {
       title: "Credentials",
       url: "/credentials",
       icon: SquareTerminal,

@@ -9,6 +9,8 @@ import { EditInvoiceSheet } from "~/features/invoice/components/edit-invoice-she
 import { NewInvoiceSheet } from "~/features/invoice/components/new-invoice-sheet";
 import { EditLeadSheet } from "~/features/lead/components/edit-lead-sheet";
 import { NewLeadSheet } from "~/features/lead/components/new-lead-sheet";
+import { EditProjectSheet } from "~/features/project/components/edit-project-sheet";
+import { NewProjectSheet } from "~/features/project/components/new-project-sheet";
 
 export const SheetProvider = () => {
   const isMounted = useMountedState();
@@ -28,6 +30,9 @@ export const SheetProvider = () => {
 
       <NewInvoiceSheet />
       <EditInvoiceSheet />
+
+      <NewProjectSheet />
+      <EditProjectSheet />
     </>
   );
 };
