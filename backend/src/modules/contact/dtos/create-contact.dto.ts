@@ -16,9 +16,25 @@ export class CreateContactDto {
   @Transform(({ value }) => value || null)
   @IsString()
   @IsOptional()
-  acronym: string;
+  email: string;
 
-  @IsUUID('4')
-  @IsDefined()
-  countryId: string;
+  @Transform(({ value }) => value || null)
+  @IsString()
+  @IsOptional()
+  phone: string;
+
+  @Transform(({ value }) => value || null)
+  @IsString()
+  @IsOptional()
+  contactName: string;
+
+  @Transform(({ value }) => value || null)
+  @IsString()
+  @IsOptional()
+  jobTitle: string;
+
+  @Transform(({ value }) => value || null)
+  @IsString()
+  @IsOptional()
+  companyName: string;
 }
