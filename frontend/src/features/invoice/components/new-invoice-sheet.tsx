@@ -19,8 +19,8 @@ export const formSchema = z.object({
   invoiceNo: z.string().optional(),
   amount: z.string().optional(),
   discount: z.string().optional(),
-  issueDate: z.string().optional(),
-  dueDate: z.string().optional(),
+  issueDate: z.date().optional(),
+  dueDate: z.date().optional(),
   description: z.string().optional(),
   // status: z.string().optional(),
 });
@@ -61,8 +61,8 @@ export const NewInvoiceSheet = () => {
               invoiceNo: "",
               amount: "",
               discount: "",
-              issueDate: "",
-              dueDate: "",
+              issueDate: undefined,
+              dueDate: undefined,
               description: "",
             }}
           />

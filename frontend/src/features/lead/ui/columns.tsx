@@ -6,6 +6,7 @@ import { Button } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Actions } from "./actions";
 import { ILead } from "~/features/lead/apis/dto";
+import { DataTableColumnHeader } from "~/components/data-table-column-header";
 
 export const columns: ColumnDef<ILead>[] = [
   {
@@ -32,17 +33,9 @@ export const columns: ColumnDef<ILead>[] = [
   },
   {
     accessorKey: "name",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Name
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Name" />
+    ),
   },
   {
     accessorKey: "description",

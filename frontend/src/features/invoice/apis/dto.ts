@@ -28,8 +28,8 @@ export interface ICreateInvoice {
   invoiceNo?: string;
   amount?: string;
   discount?: string;
-  issueDate?: string;
-  dueDate?: string;
+  issueDate?: Date;
+  dueDate?: Date;
   description?: string;
 }
 

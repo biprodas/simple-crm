@@ -1,6 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { DatePicker } from "~/components/date-picker";
+import { SingleDatePicker } from "~/components/day-picker";
 
 import { Button } from "~/components/ui/button";
 import {
@@ -21,8 +23,8 @@ export const formSchema = z.object({
   invoiceNo: z.string().optional(),
   amount: z.string().optional(),
   discount: z.string().optional(),
-  issueDate: z.string().optional(),
-  dueDate: z.string().optional(),
+  issueDate: z.date().optional(),
+  dueDate: z.date().optional(),
   description: z.string().optional(),
   // status: z.string().optional(),
 });
@@ -145,6 +147,7 @@ export const InvoiceForm = ({
                   <FormControl>
                     <Input
                       {...field}
+                      type="number"
                       id={field.name}
                       disabled={disabled}
                       placeholder="Enter amount"
@@ -170,6 +173,7 @@ export const InvoiceForm = ({
                   <FormControl>
                     <Input
                       {...field}
+                      type="number"
                       id={field.name}
                       disabled={disabled}
                       placeholder="Enter discount"
@@ -193,9 +197,10 @@ export const InvoiceForm = ({
                 </Label>
                 <div className="relative">
                   <FormControl>
-                    <Input
-                      {...field}
-                      id={field.name}
+                    <SingleDatePicker
+                      field={field}
+                      // {...field}
+                      // id={field.name}
                       disabled={disabled}
                       placeholder="Enter issue date"
                     />
@@ -218,11 +223,12 @@ export const InvoiceForm = ({
                 </Label>
                 <div className="relative">
                   <FormControl>
-                    <Input
-                      {...field}
-                      id={field.name}
+                    <SingleDatePicker
+                      field={field}
+                      // {...field}
+                      // id={field.name}
                       disabled={disabled}
-                      placeholder="Enter phone no"
+                      placeholder="Enter issue date"
                     />
                   </FormControl>
                   <FormMessage className="absolute" />
