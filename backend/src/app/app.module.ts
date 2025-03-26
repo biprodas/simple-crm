@@ -20,6 +20,7 @@ import { ProjectModule } from '@modules/project/project.module';
 import { LeadModule } from '@modules/lead/lead.module';
 import { CustomerModule } from '@modules/customer/customer.module';
 import { InvoiceModule } from '@modules/invoice/invoice.module';
+import { CredentialModule } from '@modules/credential/credential.module';
 
 @Module({
   imports: [
@@ -40,9 +41,6 @@ import { InvoiceModule } from '@modules/invoice/invoice.module';
     DatabaseModule,
     AdminModule,
     FileModule,
-    // CommonModule,
-    // DictionaryModule,
-    // WordModule,
     TaskModule,
     LogModule,
     MailModule,
@@ -55,6 +53,7 @@ import { InvoiceModule } from '@modules/invoice/invoice.module';
     ContactModule,
     ProjectModule,
     DealModule,
+    CredentialModule
   ],
   controllers: [AppController],
   providers: [AppService],

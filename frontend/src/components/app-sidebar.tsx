@@ -61,6 +61,28 @@ const data = {
       url: "/leads",
       icon: SquareTerminal,
     },
+    // {
+    //   title: "Accounts",
+    //   url: "",
+    //   icon: SquareTerminal,
+    //   items: [
+    //     {
+    //       title: "Customers",
+    //       url: "/customers",
+    //       icon: SquareTerminal,
+    //     },
+    //     {
+    //       title: "Contacts",
+    //       url: "/contacts",
+    //       icon: SquareTerminal,
+    //     },
+    //     {
+    //       title: "Credentials",
+    //       url: "/credentials",
+    //       icon: SquareTerminal,
+    //     },
+    //   ]
+    // },
     {
       title: "Customers",
       url: "/customers",
