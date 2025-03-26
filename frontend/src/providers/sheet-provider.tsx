@@ -3,6 +3,8 @@
 import { useMountedState } from "react-use";
 import { CreateContactSheet } from "~/features/contact/components/create-contact-sheet";
 import { EditContactSheet } from "~/features/contact/components/edit-contact-sheet";
+import { EditCredentialSheet } from "~/features/credential/components/edit-credential-sheet";
+import { NewCredentialSheet } from "~/features/credential/components/new-credential-sheet";
 import { EditCustomerSheet } from "~/features/customer/components/edit-customer-sheet";
 import { NewCustomerSheet } from "~/features/customer/components/new-customer-sheet";
 import { EditInvoiceSheet } from "~/features/invoice/components/edit-invoice-sheet";
@@ -33,6 +35,9 @@ export const SheetProvider = () => {
 
       <NewProjectSheet />
       <EditProjectSheet />
+
+      <NewCredentialSheet />
+      <EditCredentialSheet />
     </>
   );
 };
