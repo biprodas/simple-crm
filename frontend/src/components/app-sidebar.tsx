@@ -11,6 +11,15 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
+  LayoutDashboard,
+  Folder,
+  ListCheck,
+  UserPlus,
+  FileText,
+  KeyRound,
+  CircleDollarSign,
+  Building,
+  Users
 } from "lucide-react";
 import { ComponentProps } from "react";
 
@@ -54,12 +63,12 @@ const data = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: SquareTerminal,
+      icon: LayoutDashboard,
     },
     {
       title: "Leads",
       url: "/leads",
-      icon: SquareTerminal,
+      icon: ListCheck,
     },
     // {
     //   title: "Accounts",
@@ -86,32 +95,32 @@ const data = {
     {
       title: "Customers",
       url: "/customers",
-      icon: SquareTerminal,
+      icon: Building,
     },
     {
       title: "Contacts",
       url: "/contacts",
-      icon: SquareTerminal,
+      icon: Users,
     },
     {
       title: "Deals",
       url: "/deals",
-      icon: SquareTerminal,
+      icon: CircleDollarSign,
     },
     {
       title: "Projects",
       url: "/projects",
-      icon: SquareTerminal,
+      icon: Folder,
     },
     {
       title: "Credentials",
       url: "/credentials",
-      icon: SquareTerminal,
+      icon: KeyRound,
     },
     {
       title: "Invoices",
       url: "/invoices",
-      icon: SquareTerminal,
+      icon: FileText,
     },
     // {
     //   title: "Payment",
